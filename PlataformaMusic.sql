@@ -134,3 +134,24 @@ INSERT INTO suscripciones VALUES (2026, 2006, 2012, '2026-09-29', '2028-02-17', 
 INSERT INTO artistas VALUES (2035, 'agusfortnite', 'pendejo promesa, que canto con zell', 'Argentina', '2026-07-27');
 INSERT INTO artistas VALUES (2028, 'fantarosario', 'el mejor cantante negro', 'PuertoRico', '2026-12-21');
 INSERT INTO artistas VALUES (2031, 'slimesanti', 'no pregunte por su nombre', 'Argentina', '2026-02-12');
+
+UPDATE usuarios SET correo = 'tuliox@gmail.com'
+WHERE id= 2006;
+
+SELECT id,nombre,correo
+FROM usuarios
+WHERE id = 2006
+
+-- Mostrar con otro nombre que no sea "id"
+SELECT id CodigoUsuario
+FROM usuarios
+ORDER BY nombre
+
+--ordenar un campo de manera descendente y otro ascendente
+SELECT id CodigoUsuario, nombre, correo 
+FROM usuarios
+ORDER BY nombre ASC, correo DESC
+
+SELECT id, pais 
+FROM artistas
+WHERE id > 2031 AND pais= 'argentina'
