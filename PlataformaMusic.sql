@@ -214,3 +214,25 @@ SELECT MAX (precio) FROM plan
   -- estos dos (min, max) puede funcionar en texto mostrando el primero o ultimo en orden alfabetico 
 -- avg: valor promedio
 SELECT AVG (precio) FROM plan
+
+--GROUP BY (pag 32)
+-- agrupa registros por una columna y cuenta cuántas veces se repite cada valor.
+-- agregamos un dato mas en un plan para los ejemplos
+INSERT INTO suscripciones VALUES (2001, 2065, 1923, '2021-11-12', '2025-03-18', 'activo');
+-- trae cuantas suscripciones tiene cada plan
+SELECT plan_id, COUNT (*)
+FROM suscripciones
+GROUP BY plan_id
+-- asi solo trae cada plan con su id, para mostrar el nombre de cada plan:
+SELECT plan.nombre , COUNT (*) as usuarios_suscriptos
+FROM suscripciones
+JOIN plan ON suscripciones.plan_id = plan.id -- une la tabla plan con la de suscripciones donde el plan_id coincida con el id de plan
+GROUP BY plan.nombre;
+
+--HAVING (pag 33)
+-- filtra grupos despues de agrupar
+SELECT plan.nombre , COUNT (*) as usuarios_suscriptos
+FROM suscripciones
+JOIN plan ON suscripciones.plan_id = plan.id
+GROUP BY plan.nombre
+HAVING COUNT (*) <=2; --muestra solo los planes que tiene menos o igual a 2
