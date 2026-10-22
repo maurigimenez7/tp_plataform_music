@@ -163,3 +163,54 @@ WHERE id IS NULL;
 -- nos muestra los que si tienen un id cargado
 SELECT * FROM usuarios
 WHERE id IS NOT NULL;
+
+-- BETWEEN (pag 27)
+-- significaria "entre". Da un limite o un rango de lo que debe devolver
+SELECT * FROM usuarios
+WHERE id BETWEEN 2000 AND 2004;
+-- tambien nos ayuda a mostrar lo que no esta dentro del rango que le pedimos
+SELECT * FROM usuarios
+WHERE id NOT BETWEEN 2000 AND 2003;
+-- entre fechas
+SELECT * FROM suscripciones
+WHERE fechainicio BETWEEN '2010/01/01' AND '2022/01/01';
+
+-- IN (pag 28)
+-- significaria "sea". Sirve para verificar datos, Por ejemplo mostrar que los id sean 2001, 2004 (no hay), y 2006 en usuarios
+SELECT * FROM usuarios
+WHERE id IN (2001, 2004, 2006); 
+-- tambien para verificar que los id coincidan en tablas conectadas
+SELECT * FROM usuarios
+WHERE id IN (SELECT usuarios_id FROM suscripciones ) 
+
+-- LIKE/NOT LIKE (pag 29)
+-- Busca textos que coincidan con un patrón. Con estos comodines (%:los caracteres que sean. '_': caracteres definidos.
+SELECT * FROM usuarios
+WHERE nombre LIKE 'a%'
+
+SELECT * FROM usuarios
+WHERE nombre LIKE '_____' -- 5 caracteres definido
+-- NOT LIKE seria lo contrario "mostrar los nombres que no contengan una a" o "los nombres que no sean de 5 caracteres"
+SELECT * FROM usuarios
+WHERE nombre NOT LIKE '_____' 
+
+SELECT * FROM usuarios
+WHERE nombre NOT LIKE '%a%'
+
+-- COUNT (pag 30)
+-- sirve para contar los registros 
+SELECT COUNT (*) FROM usuarios
+
+-- cuantos registros hay con correo cargado
+SELECT COUNT (correo) FROM usuarios
+
+--  sum - min - max - avg (pag 31)
+-- sum: sirve para sumar valores
+SELECT SUM (precio) FROM plan
+-- min: valor minimo 
+SELECT MIN (precio) FROM plan
+-- max: valor maximo
+SELECT MAX (precio) FROM plan
+  -- estos dos (min, max) puede funcionar en texto mostrando el primero o ultimo en orden alfabetico 
+-- avg: valor promedio
+SELECT AVG (precio) FROM plan
