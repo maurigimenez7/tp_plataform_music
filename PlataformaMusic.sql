@@ -236,3 +236,8 @@ FROM suscripciones
 JOIN plan ON suscripciones.plan_id = plan.id
 GROUP BY plan.nombre
 HAVING COUNT (*) <=2; --muestra solo los planes que tiene menos o igual a 2
+
+--DISTINCT (pag 34)
+--elimina duplicados 
+SELECT DISTINCT pais
+FROM artistas;
