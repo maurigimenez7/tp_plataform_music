@@ -155,3 +155,11 @@ ORDER BY nombre ASC, correo DESC
 SELECT id, pais 
 FROM artistas
 WHERE id > 2031 AND pais= 'argentina'
+
+-- IS NULL (pag 26)
+-- nos muestra en usuarios los que no tienen id cargado
+SELECT * FROM usuarios
+WHERE id IS NULL;
+-- nos muestra los que si tienen un id cargado
+SELECT * FROM usuarios
+WHERE id IS NOT NULL;
